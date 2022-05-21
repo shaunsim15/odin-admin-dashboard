@@ -1,0 +1,22 @@
+img {
+    background-color: lightblue;
+}
+
+form{
+    position: relative;
+}
+
+form>label{
+    opacity: 0.3;
+    position: absolute;
+    left: 5px;
+}
+
+form>input:focus+label{
+    opacity: 0; 
+}
+
+img{
+    height: 50px;
+    width: auto;
+}
