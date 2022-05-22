@@ -4,6 +4,29 @@ body{
     
 }
 
+.dashboard{
+    background-color: #1992d4;
+}
+
+.dashboard-heading p{
+    font-size: 25px;
+    font-weight: 700;
+    color: white;
+}
+
+
+.dashboard-locations p, .dashboard-help p{
+    font-size: 20px;
+    font-weight: 600;
+    color: white;
+}
+
+.dashboard-heading, .dashboard-locations, .dashboard-help{
+    display: grid;
+    grid-template-columns: 1fr 2fr; /* Use of implicit grid, didnt define rows*/
+    align-items: center; 
+}
+
 .main-body{
     display: grid;
     grid-template-rows: 200px 1fr;
