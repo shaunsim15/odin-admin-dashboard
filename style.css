@@ -3,6 +3,10 @@
     src: url('./fonts/Roboto-Regular.ttf');
 }
 
+:root{
+    --shaun-box-shadow-length: 5px;
+}
+
 *{
     box-sizing: border-box;
 }
@@ -20,30 +24,37 @@ body{
 
 .dashboard{
     background-color: #1992d4;
-       
 }
 
 .dashboard-heading p{
-    font-size: 25px;
-    font-weight: 700;
+    font-size: 1.65rem;
+    font-weight: 900;
     color: white;
 }
 
-.dashboard img{
-    height: 30px;
+.dashboard-heading img{
+    height: 45px;
     width: auto;
+    justify-self: end;
+    padding-right: 15px;
 }
 
+.dashboard-locations img, .dashboard-help img{
+    height: 30px;
+    width: auto;
+    justify-self: end;
+    padding-right: 20px;
+}
 
 .dashboard-locations p, .dashboard-help p{
-    font-size: 20px;
+    font-size: 1.3rem;
     font-weight: 600;
     color: white;
 }
 
 .dashboard-heading, .dashboard-locations, .dashboard-help{
     display: grid;
-    grid-template-columns: 1fr 4fr; /* Use of implicit grid, didnt define rows*/
+    grid-template-columns: 50px 4fr; /* Use of implicit grid, didnt define rows*/
     align-items: center; 
 }
 
@@ -55,7 +66,7 @@ body{
 .navigator{
     display: grid;
     grid-template-rows: 1fr 1fr;
-    box-shadow: 0px 2px 5px grey;
+    box-shadow: 0px 2px var(--shaun-box-shadow-length) black; /* offset-x | offset-y | blur-radius | color */
 }
 
 .navigator-search{
@@ -64,6 +75,21 @@ body{
     grid-template-columns: max(85px, 3.5%) 1fr max(75px, 4%) max(85px, 4%) max(175px, 8%);
     justify-items: center;
     align-items: center;
+}
+
+form{
+    position: relative;
+}
+
+form>label{
+    opacity: 0.3;
+    position: absolute;
+    left: 13px;
+    top: 12px;
+}
+
+form>input:focus+label{
+    opacity: 0; 
 }
 
 .navigator-search>img:first-of-type{
@@ -158,13 +184,15 @@ body{
     border-radius: 99rem; /*I stole this from someone's project*/
     color: white;
     font-weight: 600;
-    font-size: 15px;
+    font-size: 0.9rem;
 }
 
 
 .content{
     display: grid;
     grid-template: 1fr 1fr / 2fr 1fr;
+    background-color: #e7e5e4;
+    margin-top: var(--shaun-box-shadow-length); /* To allow the box shadow to be visible!*/
 }
 
 .content-projects{
@@ -173,7 +201,7 @@ body{
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
     grid-template-rows: 50px auto;
     gap: 25px;
-    padding: 25px;
+    padding: 0px 25px 20px 25px;
 }
 
 .content-projects>h2{
@@ -181,8 +209,37 @@ body{
 }
 
 .project{
-    border: 2px red solid;
+    border-left: 10px #f0b429 solid;
     border-radius: 5%;
+    background-color: white;
+    padding: 20px;
+    display: grid;
+    grid-template: 1fr 3fr 1fr / 1fr 40px 40px 40px;
+    height: 300px;
+    grid-template-areas: 
+    "project-header project-header project-header project-header"
+    "project-para project-para project-para project-para"
+    ". favorite view share";
+}
+
+.project h3{
+    grid-area: project-header;
+}
+
+.project p{
+    grid-area: project-para;
+}
+
+.project .favorite{
+    grid-area: favorite;
+}
+
+.project .view{
+    grid-area: view;
+}
+
+.project .share{
+    grid-area: share;
 }
 
 .project img{
@@ -193,18 +250,41 @@ body{
 .content-announcements{
     grid-area: 1/2/2/3;
     display: grid;
-    grid-template-rows: 50px 1fr 1fr 1fr;
+    grid-template-rows: 50px auto;
+}
+
+.content-announcements-container{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    border-radius: 5%;
+    background-color: white;
+    padding: 5px 25px 5px 25px;
+    margin: 25px 20px 0px 0px;
+}
+
+.divider{
+    border-top: 1px solid gray;
+    width: 100%; /* Needed, as the dividers become dots when flex-direction is set to column*/
 }
 
 .content-trending{
     grid-area: 2/2/3/3;
     display: grid;
-    grid-template-rows: 50px 1fr 1fr 1fr 1fr;
+    grid-template-rows: 50px 1fr;
 }
 
 .trending{
     display: grid;
     grid-template: 1fr 1fr/ 80px 1fr;  
+}
+
+.content-trending-container{
+    display: grid;
+    grid-template-rows: repeat(4, 1fr);
+    background-color: white;
+    border-radius: 5%;
+    margin: 25px 20px 20px 0px;
 }
 
 .trending img{
@@ -217,30 +297,15 @@ body{
 }
 
 .trending h4{
-    border: 2px blue solid;
     margin: 0px;
     align-self: end;
 }
 
 .trending a{
     align-self: start;
-    border: 2px red dashed;
 }
 
-form{
-    position: relative;
-}
 
-form>label{
-    opacity: 0.3;
-    position: absolute;
-    left: 13px;
-    top: 12px;
-}
-
-form>input:focus+label{
-    opacity: 0; 
-}
 
 img{
     height: 50px;
